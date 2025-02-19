@@ -1,12 +1,12 @@
 extends Node2D
 
 ##################################################
-const EMPTY_TEXTURE = preload("res://scenes/tile/empty_tile.png")
-const MOUSE_OVER_TEXTURE = preload("res://scenes/tile/mouse_over_tile.png")
-const START_TEXTURE = preload("res://scenes/tile/start_tile.png")
-const END_TEXTURE = preload("res://scenes/tile/end_tile.png")
-const OBSTACLE_TEXTURE = preload("res://scenes/tile/obstacle_tile.png")
-const PATH_TEXTURE = preload("res://scenes/tile/path_tile.png")
+const EMPTY_TEXTURE: Texture = preload("res://scenes/tile/empty_tile.png")
+const MOUSE_OVER_TEXTURE: Texture = preload("res://scenes/tile/mouse_over_tile.png")
+const START_TEXTURE: Texture = preload("res://scenes/tile/start_tile.png")
+const END_TEXTURE: Texture = preload("res://scenes/tile/end_tile.png")
+const OBSTACLE_TEXTURE: Texture = preload("res://scenes/tile/obstacle_tile.png")
+const PATH_TEXTURE: Texture = preload("res://scenes/tile/path_tile.png")
 # 각 타일 별 상태 이미지 텍스처 상수
 
 var area_node: Area2D

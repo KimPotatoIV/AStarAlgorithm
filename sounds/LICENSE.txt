@@ -1,0 +1,4 @@
+Author: 森田交一
+Title: 8bit16
+License: CC BY 4.0
+Source: https://maou.audio/bgm_8bit16/

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GM="*res://manager/g_m.gd"
 AS="*res://manager/a_s.gd"
+SM="*res://manager/s_m.gd"
 
 [display]
 

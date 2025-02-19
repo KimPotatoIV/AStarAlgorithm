@@ -83,6 +83,10 @@ func _on_timer_node_timeout() -> void:
 # 타이머 시간이 만료됐을 때 실행되는 함수
 	generating = AS.find_path(board, path)
 	# 경로를 한 단계 찾고 연산 중인지 여부 반환 및 설정
+	
+	SM.effect_sound_play()
+	# 효과음 재생
+	
 	if generating:
 	# 연산 중이면
 		update_board()
@@ -91,8 +95,23 @@ func _on_timer_node_timeout() -> void:
 		# 타이머 재시작
 	else:
 	# 연산 중이 아니면(길이 없거나 길을 찾았거나)
+	# 연산 과정에서 path 중 지워진 것이 있을 수 있기 때문에
+	# 최종적으로 장애물 상태를 제외하고 모두 초기화 후 다시 그림
 		timer_node.stop()
 		# 타이머 정지
+		
+		for row in board:
+			for col in row:
+				if not col.state == GM.TILE_STATE.OBSTACLE:
+					col.set_tile(GM.TILE_STATE.EMPTY)
+		# OBSTACLE 상태가 아닌 모든 타일 EMPTY로 설정 초기화
+		
+		for i in path.size():
+		# path 크기만큼 순회하며
+			board[path[i].x][path[i].y].state = GM.TILE_STATE.PATH
+			# board 내에 path 인자 좌표의 타일 상태값을 PATH로 설정
+			board[path[i].x][path[i].y].update_tile()
+			# 타일 텍스처 업데이트
 		
 		board[0][0].set_tile(GM.TILE_STATE.START)
 		board[ROWS_COLS - 1][ROWS_COLS - 1].set_tile(GM.TILE_STATE.END)
