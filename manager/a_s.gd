@@ -142,8 +142,19 @@ func is_valid_neighbor_node(board_value: Array, node_value: Vector2i) -> bool:
 ##################################################
 func get_f_score(current_node_value: Vector2i) -> float:
 	h_score = \
-	abs(end_node.x - current_node_value.x) + abs(end_node.y - current_node_value.y)
-	# 맨해튼 거리 방식으로 연산. 대각선 이동이 없다고 가정
+	#abs(end_node.x - current_node_value.x) + abs(end_node.y - current_node_value.y)
+	# 위는 맨해튼 거리 방식으로 연산
+	sqrt(pow(end_node.x - current_node_value.x, 2) + pow(end_node.y - current_node_value.y, 2))
+	# 위는 유클리드 거리 방식으로 연산
 	
 	return g_score + h_score
 	# f_score 반환
+
+##################################################
+func reset() -> void:
+# 초기화 함수
+	g_score = 0
+	h_score = INF
+	open_list.clear()
+	closed_list.clear()
+	# 각 변수 초기화

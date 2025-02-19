@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 	# 스페이스 키를 누르면
 		timer_node.start()
 		# 타이머 시작
+	elif Input.is_action_just_pressed("ui_cancel") and not generating:
+		reset_board()
 
 ##################################################
 func init_board() -> void:
@@ -95,3 +97,22 @@ func _on_timer_node_timeout() -> void:
 		board[0][0].set_tile(GM.TILE_STATE.START)
 		board[ROWS_COLS - 1][ROWS_COLS - 1].set_tile(GM.TILE_STATE.END)
 		# Start, End 타일 재설정
+
+##################################################
+func reset_board() -> void:
+	path.clear()
+	generating = false
+	GM.set_is_dragging(false)
+	# 각 변수 초기화
+	
+	for row in board:
+		for col in row:
+			col.set_tile(GM.TILE_STATE.EMPTY)
+	# 모든 타일 EMPTY로 설정 초기화
+	
+	board[0][0].set_tile(GM.TILE_STATE.START)
+	board[ROWS_COLS - 1][ROWS_COLS - 1].set_tile(GM.TILE_STATE.END)
+	# Start와 End 설정
+	
+	AS.reset()
+	# 에이스타 스크립트에서도 초기화
