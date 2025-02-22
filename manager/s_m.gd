@@ -12,6 +12,7 @@ func _ready() -> void:
 	effect_sound_player = AudioStreamPlayer.new()
 	add_child(effect_sound_player)
 	effect_sound_player.stream = GNERATING_SOUND
+	effect_sound_player.volume_db = -10.0
 	# 효과음 재생 플레이어 설정
 	
 
